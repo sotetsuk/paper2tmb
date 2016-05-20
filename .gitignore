@@ -1,6 +1,8 @@
 .idea/*
 *.iml
 
+paper2img/__pycache__/*
+paper2img/tests/__pycache__/*
 .python-version
 build/*
 dist/*
