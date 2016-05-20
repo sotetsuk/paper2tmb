@@ -1,0 +1,7 @@
+.idea/*
+*.iml
+
+.python-version
+build/*
+dist/*
+paper2img.egg-info/*
