@@ -1,9 +1,9 @@
 .idea/*
 *.iml
 
-paper2img/__pycache__/*
-paper2img/tests/__pycache__/*
+paper2tmb/__pycache__/*
+paper2tmb/tests/__pycache__/*
 .python-version
 build/*
 dist/*
-paper2img.egg-info/*
+paper2tmb.egg-info/*

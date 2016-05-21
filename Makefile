@@ -3,13 +3,13 @@
 clean: 
 	rm -rf build
 	rm -rf dist
-	rm -rf paper2img.egg-info
+	rm -rf paper2tmb.egg-info
 
 build:
 	python setup.py install
 
 test:
-	python -m unittest -v paper2img/tests/*.py
+	python -m unittest -v paper2tmb/tests/*.py
 
 pypi:
 	python setup.py register

@@ -1,1 +1,1 @@
-# paper2img
+# paper2tmb
