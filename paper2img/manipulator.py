@@ -31,19 +31,21 @@ class Manipulator(object):
     def close(self):
         subprocess.call(['rm', '-rf', self.dirname])
 
-    def pdf2png(self, trim=None):
+    def pdf2png(self, trim=None, density=None):
         assert trim is None or "x" in trim, "trim parameter is wrong"
-
-        if trim is not None:
-            trim_command = ['-gravity', 'northwest', '-chop', trim, '-gravity', 'southeast', '-chop', trim]
 
         f = os.path.join(self.dirname, "pdf2png.png")
         command = ["convert", "-background", "white", "-alpha", "remove"]
-        if trim is None:
-            command += [self._last, f]
-        else:
-            command += trim_command + [self._last, f]
 
+        if trim is not None:
+            trim_command = ['-gravity', 'northwest', '-chop', trim, '-gravity', 'southeast', '-chop', trim]
+            command += trim_command
+
+        if density is not None:
+            density_command = ['-density', "{}x{}".format(density, density)]
+            command += density_command
+
+        command += [self._last, f]
         subprocess.call(command)
 
         self._last = f

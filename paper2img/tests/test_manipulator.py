@@ -31,6 +31,26 @@ class TestManipulator(unittest.TestCase):
             m._num_page = 12
             self.assertTrue(m._last == os.path.join(m.dirname, "pdf2png.png"))
 
+    def test_pdf2png_density(self):
+        with Manipulator("paper2img/tests/testdata/1412.6785v2.pdf") as m:
+            m.pdf2png(density="20")
+
+            for i in range(12):
+                self.assertTrue(os.path.exists(os.path.join(m.dirname, "pdf2png-{}.png".format(i))))
+
+            m._num_page = 12
+            self.assertTrue(m._last == os.path.join(m.dirname, "pdf2png.png"))
+
+    def test_pdf2png_both_trim_density(self):
+        with Manipulator("paper2img/tests/testdata/1412.6785v2.pdf") as m:
+            m.pdf2png(trim="100x100", density="20")
+
+            for i in range(12):
+                self.assertTrue(os.path.exists(os.path.join(m.dirname, "pdf2png-{}.png".format(i))))
+
+            m._num_page = 12
+            self.assertTrue(m._last == os.path.join(m.dirname, "pdf2png.png"))
+
     def test_stack(self):
         with Manipulator("paper2img/tests/testdata/1412.6785v2.pdf") as m:
             m.pdf2png()
