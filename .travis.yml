@@ -1,14 +1,15 @@
+os:
+  - osx
+
 language: python
 
 python:
   - 3.5
 
 install:
+  - brew install gs
+  - brew install imagemagick
   - make build
-  - pip install coveralls
 
 script:
-  - coverage run --source=paper2img -m unittest -v paper2img/tests/*.py
-
-after_success:
-  - coveralls
+  - make test
