@@ -74,7 +74,7 @@ class Manipulator(object):
         assert size is not None, "size is not set"
 
         f = os.path.join(self.dirname, "resize_{}.png".format(size))
-        subprocess.call(["convert", "-resize", size, self._last, f])
+        subprocess.call(["convert", "-scale", size, self._last, f])
 
         self._last = f
 
