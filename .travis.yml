@@ -1,14 +1,17 @@
-os:
-  - osx
-
 language: python
 
 python:
+  - 3.3
+  - 3.4
   - 3.5
 
+before_install:
+  # thanks to: https://cogo.wordpress.com/2013/12/07/update-imagemagick-on-travis-ci
+  - sudo add-apt-repository -y ppa:moti-p/cc
+  - sudo apt-get update
+  - sudo apt-get -y --reinstall install imagemagick
+
 install:
-  - brew install gs
-  - brew install imagemagick
   - make build
 
 script:
