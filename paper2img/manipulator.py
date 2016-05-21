@@ -16,10 +16,17 @@ class Manipulator(object):
             raw = self.input_file + str(datetime.now())
             self.dirname = hashlib.sha224(raw.encode('utf-8')).hexdigest()
 
+    def __enter__(self):
+        self.mkdir()
+
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.close()
+
+    def mkdir(self):
         if not os.path.isdir(self.dirname):
             os.mkdir(self.dirname)
-
-        print(self.dirname)
 
     def close(self):
         subprocess.call(['rm', '-rf', self.dirname])
