@@ -80,5 +80,22 @@ class Manipulator(object):
 
         self._last = f
 
+    def top(self, _reduce="50%"):
+        assert "pdf2png" in self._last
+
+        assert '%' in _reduce
+        assert "." not in _reduce
+
+        p = 100 - int(_reduce.rstrip("%"))
+
+        f = os.path.join(self.dirname, "top_{}.png".format(_reduce))
+        base, ext = os.path.splitext(self._last)
+        _input = base + "-0" + ext
+
+        subprocess.call(["convert", "-crop", "100%x{:d}%".format(p), _input, f])
+
+        base, ext = os.path.splitext(f)
+        self._last = base + "-0" + ext
+
     def out(self, output_file):
         subprocess.call(["cp", self._last, output_file])

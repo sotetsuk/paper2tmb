@@ -72,6 +72,14 @@ class TestManipulator(unittest.TestCase):
             self.assertTrue(os.path.exists(os.path.join(m.dirname, "resize_x400.png")))
             self.assertTrue(m._last == os.path.join(m.dirname, "resize_x400.png"))
 
+    def test_top(self):
+        with Manipulator("paper2img/tests/testdata/1412.6785v2.pdf") as m:
+            m.pdf2png(trim="400x240", density="300x300")
+            m.top("60%")
+
+            self.assertTrue(os.path.exists(os.path.join(m.dirname, "top_60%-0.png")))
+            self.assertTrue(m._last == os.path.join(m.dirname, "top_60%-0.png"))
+
     def test_out(self):
         with Manipulator("paper2img/tests/testdata/1412.6785v2.pdf") as m:
             target = "paper2img/tests/testdata/out.pdf"
