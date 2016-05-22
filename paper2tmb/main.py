@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-""" Convert academic papers (pdf) to nice looking images
+"""Convert academic papers (pdf) to nice thumbnail (png)
 
 Usage:
   paper2tmb stack [--trim=<trim>] [--size=<size>] <input-file> <output-file> <num-col> <num-row>
